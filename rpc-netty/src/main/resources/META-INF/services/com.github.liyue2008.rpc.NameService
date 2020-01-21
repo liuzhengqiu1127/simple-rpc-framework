@@ -1,1 +1,2 @@
 com.github.liyue2008.rpc.nameservice.LocalFileNameService
+com.github.liyue2008.rpc.nameservice.JdbcNameService

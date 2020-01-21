@@ -15,6 +15,7 @@ package com.github.liyue2008.rpc;
 
 import java.io.IOException;
 import java.net.URI;
+import java.sql.SQLException;
 import java.util.Collection;
 
 /**
@@ -39,7 +40,7 @@ public interface NameService {
      * @param serviceName 服务名称
      * @param uri 服务地址
      */
-    void registerService(String serviceName, URI uri) throws IOException;
+    void registerService(String serviceName, URI uri) throws IOException, SQLException;
 
     /**
      * 查询服务地址
