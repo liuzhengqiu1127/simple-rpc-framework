@@ -17,25 +17,18 @@ import com.github.liyue2008.rpc.transport.RequestHandlerRegistry;
 import com.github.liyue2008.rpc.transport.TransportServer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.epoll.Epoll;
 import io.netty.channel.epoll.EpollEventLoopGroup;
 import io.netty.channel.epoll.EpollServerSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author LiYue
  * Date: 2019/9/20
  */
 public class NettyServer implements TransportServer {
-    private static final Logger logger = LoggerFactory.getLogger(NettyServer.class);
     private int port;
     private EventLoopGroup acceptEventGroup;
     private EventLoopGroup ioEventGroup;
