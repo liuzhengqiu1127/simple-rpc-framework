@@ -37,7 +37,8 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
     private final int port = 9999;
     private final URI uri = URI.create("rpc://" + host + ":" + port);
     private TransportServer server = null;
-    private TransportClient client = ServiceSupport.load(TransportClient.class);
+    private TransportClient client = ServiceSupport.load(TransportClient.class);//
+
     private final Map<URI, Transport> clientMap = new ConcurrentHashMap<>();
     private final StubFactory stubFactory = ServiceSupport.load(StubFactory.class);
     private final ServiceProviderRegistry serviceProviderRegistry = ServiceSupport.load(ServiceProviderRegistry.class);

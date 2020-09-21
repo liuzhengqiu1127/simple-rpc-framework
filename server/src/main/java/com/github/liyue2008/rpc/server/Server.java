@@ -39,7 +39,7 @@ public class Server {
         System.setProperty("nameservice.jdbc.password", "Qiu19871127@&");
         HelloService helloService = new HelloServiceImpl();
         logger.info("创建并启动RpcAccessPoint...");
-        try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class);
+        try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class);//依赖于接口而不依赖于实现，类似@AutoWrite
             Closeable ignored = rpcAccessPoint.startServer()) {
             NameService nameService = rpcAccessPoint.getNameService(nameServiceUri);
             assert nameService != null;
