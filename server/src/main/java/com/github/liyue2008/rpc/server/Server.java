@@ -40,7 +40,7 @@ public class Server {
         HelloService helloService = new HelloServiceImpl();
         logger.info("创建并启动RpcAccessPoint...");
         try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class);//依赖于接口而不依赖于实现，类似@AutoWrite
-            Closeable ignored = rpcAccessPoint.startServer()) {
+            Closeable ignored = rpcAccessPoint.startServer()){ //Netty服务端启动
             NameService nameService = rpcAccessPoint.getNameService(nameServiceUri);
             assert nameService != null;
             logger.info("向RpcAccessPoint注册{}服务...", serviceName);
