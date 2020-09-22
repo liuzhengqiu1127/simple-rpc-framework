@@ -93,7 +93,7 @@ public class JdbcNameService implements NameService, Closeable {
             while (resultSet.next()){
                 uriList.add(URI.create(resultSet.getString(1)));
             }
-            return uriList.get(ThreadLocalRandom.current().nextInt(uriList.size()));
+            return uriList.get(ThreadLocalRandom.current().nextInt(uriList.size()));//多线程环境下面每个线程获取自己的index
         }catch (SQLException e){
             log.error("Exception: ",e);
             throw new RuntimeException(e);

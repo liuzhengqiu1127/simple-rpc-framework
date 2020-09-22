@@ -56,6 +56,7 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public synchronized <T> URI addServiceProvider(T service, Class<T> serviceClass) {
         serviceProviderRegistry.addServiceProvider(serviceClass, service);

@@ -2,9 +2,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -70,23 +70,24 @@ public class NettyClient implements TransportClient {
         if (ioEventGroup == null) {
             ioEventGroup = newIoEventGroup();
         }
-        if (bootstrap == null){
+        if (bootstrap == null) {
             ChannelHandler channelHandlerPipeline = newChannelHandlerPipeline();
             bootstrap = newBootstrap(channelHandlerPipeline, ioEventGroup);
         }
-            ChannelFuture channelFuture;
-            Channel channel;
-            channelFuture = bootstrap.connect(address);
-            if (!channelFuture.await(connectionTimeout)) {
-                throw new TimeoutException();
-            }
-            channel = channelFuture.channel();
-            if (channel == null || !channel.isActive()) {
-                throw new IllegalStateException();
-            }
-            channels.add(channel);
-            return channel;
+        ChannelFuture channelFuture;
+        Channel channel;
+        channelFuture = bootstrap.connect(address);
+        if (!channelFuture.await(connectionTimeout)) {
+            throw new TimeoutException();
+        }
+        channel = channelFuture.channel();
+        if (channel == null || !channel.isActive()) {
+            throw new IllegalStateException();
+        }
+        channels.add(channel);
+        return channel;
     }
+
     private ChannelHandler newChannelHandlerPipeline() {
         return new ChannelInitializer<Channel>() {
             @Override
@@ -111,7 +112,7 @@ public class NettyClient implements TransportClient {
     @Override
     public void close() {
         for (Channel channel : channels) {
-            if(null != channel) {
+            if (null != channel) {
                 channel.close();
             }
         }
