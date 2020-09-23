@@ -48,7 +48,7 @@ public class SerializeSupport {
     @SuppressWarnings("unchecked")
     private static  <E> E parse(byte [] buffer, int offset, int length, Class<E> eClass) {
         Object entry =  serializerMap.get(eClass).parse(buffer, offset, length);
-        if (eClass.isAssignableFrom(entry.getClass())) {
+        if (eClass.isAssignableFrom(entry.getClass())) { // entry.getClass 是不是 eClass的子类或者接口
             return (E) entry;
         } else {
             throw new SerializeException("Type mismatch!");
