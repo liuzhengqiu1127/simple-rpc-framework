@@ -31,7 +31,7 @@ public class SerializeSupport {
     private static Map<Byte/*序列化实现类型*/, Class<?>/*序列化对象类型*/> typeMap = new HashMap<>();
 
     static {
-        for (Serializer serializer : ServiceSupport.loadAll(Serializer.class)) {
+        for (Serializer serializer : ServiceSupport.loadAll(Serializer.class)) { // JDK SPI的加载机制
             registerType(serializer.type(), serializer.getSerializeClass(), serializer);
             logger.info("Found serializer, class: {}, type: {}.",
                     serializer.getSerializeClass().getCanonicalName(),
