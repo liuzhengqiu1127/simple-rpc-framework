@@ -72,7 +72,7 @@ public class RpcRequestHandler implements RequestHandler, ServiceProviderRegistr
 
     @Override
     public synchronized <T> void addServiceProvider(Class<? extends T> serviceClass, T serviceProvider) {
-        serviceProviders.put(serviceClass.getCanonicalName(), serviceProvider);
+        serviceProviders.put(serviceClass.getCanonicalName(), serviceProvider);//服务名称和服务实例来进行绑定
         logger.info("Add service: {}, provider: {}.",
                 serviceClass.getCanonicalName(),
                 serviceProvider.getClass().getCanonicalName());
