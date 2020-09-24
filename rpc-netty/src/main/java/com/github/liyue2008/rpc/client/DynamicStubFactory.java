@@ -90,7 +90,6 @@ public class DynamicStubFactory implements StubFactory{
             Map<String, byte[]> results = compiler.compile(stubSimpleName + ".java", source);
             // 加载编译好的类
             Class<?> clazz = compiler.loadClass(stubFullName, results);
-
             // 把Transport赋值给桩
             ServiceStub stubInstance = (ServiceStub) clazz.newInstance();
             stubInstance.setTransport(transport);
