@@ -31,7 +31,7 @@ public class RequestHandlerRegistry {
     private static RequestHandlerRegistry instance = null;
     public static RequestHandlerRegistry getInstance() {
         if (null == instance) {
-            instance = new RequestHandlerRegistry();
+            instance = new RequestHandlerRegistry(); // 注册requestHandler.type 和 requestHandler的关系
         }
         return instance;
     }

@@ -66,7 +66,7 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
     @Override
     public synchronized Closeable startServer() throws Exception {
         if (null == server) {
-            server = ServiceSupport.load(TransportServer.class);
+            server = ServiceSupport.load(TransportServer.class); // NettyServer
             server.start(RequestHandlerRegistry.getInstance(), port);
 
         }
