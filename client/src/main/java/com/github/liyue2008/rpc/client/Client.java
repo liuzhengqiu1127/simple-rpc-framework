@@ -35,7 +35,7 @@ public class Client {
 //        File file = new File(tmpDirFile, "simple_rpc_name_service.data");
         URI nameServiceUri = URI.create("jdbc:mysql://localhost:3306/mytest?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT");
         System.setProperty("nameservice.jdbc.username", "root");
-        System.setProperty("nameservice.jdbc.password", "Qiu19871127@&");
+        System.setProperty("nameservice.jdbc.password", "******");
         String name = "Master MQ";
         try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) { // 获取启动服务实例
             NameService nameService = rpcAccessPoint.getNameService(nameServiceUri); // 获取注册中心

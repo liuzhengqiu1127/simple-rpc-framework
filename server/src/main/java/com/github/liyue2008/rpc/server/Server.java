@@ -36,7 +36,7 @@ public class Server {
 //        File file = new File(tmpDirFile, "simple_rpc_name_service.data");
         URI nameServiceUri = URI.create("jdbc:mysql://localhost:3306/mytest?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT");
         System.setProperty("nameservice.jdbc.username", "root");
-        System.setProperty("nameservice.jdbc.password", "Qiu19871127@&");
+        System.setProperty("nameservice.jdbc.password", "*******");
         HelloService helloService = new HelloServiceImpl();
         logger.info("创建并启动RpcAccessPoint...");
         try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class);//依赖于接口而不依赖于实现，类似@AutoWrite
