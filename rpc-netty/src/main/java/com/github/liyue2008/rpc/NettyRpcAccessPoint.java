@@ -45,11 +45,11 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
 
     @Override
     public <T> T getRemoteService(URI uri, Class<T> serviceClass) {
-        Transport transport = clientMap.computeIfAbsent(uri, this::createTransport);
-        return stubFactory.createStub(transport, serviceClass);
+        Transport transport = clientMap.computeIfAbsent(uri, this::createTransport); // 创建NettyTransport，连接服务端
+        return stubFactory.createStub(transport, serviceClass); // 创建桩
     }
 
-    private Transport createTransport(URI uri) {
+    private Transport createTransport(URI uri) { // 创建Transport传输通道
         try {
             return client.createTransport(new InetSocketAddress(uri.getHost(), uri.getPort()),30000L);
         } catch (InterruptedException | TimeoutException e) {

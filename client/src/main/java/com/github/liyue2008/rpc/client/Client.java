@@ -37,15 +37,15 @@ public class Client {
         System.setProperty("nameservice.jdbc.username", "root");
         System.setProperty("nameservice.jdbc.password", "Qiu19871127@&");
         String name = "Master MQ";
-        try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) {
-            NameService nameService = rpcAccessPoint.getNameService(nameServiceUri);
+        try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) { // 获取启动服务实例
+            NameService nameService = rpcAccessPoint.getNameService(nameServiceUri); // 获取注册中心
             assert nameService != null;
-            URI uri = nameService.lookupService(serviceName);
+            URI uri = nameService.lookupService(serviceName); //根据服务名获取URI
             assert uri != null;
             logger.info("找到服务{}，提供者: {}.", serviceName, uri);
-            HelloService helloService = rpcAccessPoint.getRemoteService(uri, HelloService.class);
+            HelloService helloService = rpcAccessPoint.getRemoteService(uri, HelloService.class); //获取服务实例
             logger.info("请求服务, name: {}...", name);
-            String response = helloService.hello(name);
+            String response = helloService.hello(name); //实际进行调用
             logger.info("收到响应: {}.", response);
         }
 
